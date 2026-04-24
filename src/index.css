@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+  --font-nunito: "Nunito Sans", sans-serif;
+  --color-blue-bg: rgb(43, 56, 68);
+  --color-gray-text: rgb(17 21 23);
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
