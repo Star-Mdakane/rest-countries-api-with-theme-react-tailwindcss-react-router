@@ -6,7 +6,7 @@ const Header = () => {
 
     return (
 
-        <header className='max-w-360 mx-auto w-full h-20 flex items-center justify-between px-4 md:px-10 lg:px-20'>
+        <header className='max-w-360 mx-auto w-full h-20 flex items-center justify-between px-4 md:px-10 lg:px-20 bg-white dark:bg-secondary'>
             <h1 className='text-[14px] lg:text-[24px] dark:text-white leading-5 lg:leading-[137.5%] tracking-normal font-extrabold'>
                 Where in the world?
             </h1>
