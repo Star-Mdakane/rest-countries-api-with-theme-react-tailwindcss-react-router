@@ -1,7 +1,11 @@
+import { Link } from "react-router"
 
 const NotFound = () => {
     return (
-        <div className='text-4xl'>NotFound</div>
+        <div className="flex items-center justify-center">
+            <h2>Page Not Found</h2>
+            <Link to="/">Home</Link>
+        </div>
     )
 }
 

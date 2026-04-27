@@ -1,22 +1,34 @@
-import { useLocation, useNavigate } from "react-router"
+import { useLocation, useNavigate, useParams } from "react-router"
 
 const DropdownNav = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
+    const { regionName } = useParams();
+
+    const currentRegion = regionName || "all";
+
+    const handleChane = (e) => {
+        const region = e.target.value;
+        if (region === "all") {
+            navigate("/");
+        } else {
+            navigate(`/region/${region}`)
+        }
+    }
 
     return (
         <div className="relative w-50">
             <select name="" id="" className="w-50 px-6 h-12 pr-12 rounded-[5px] text-[12px] leading-[135%] tracking-normal font-normal bg-white text-text dark:bg-secondary dark:text-white appearance-none cursor-pointer shadow-[0_2px_9px_0_rgb(0_0_0/5.32%)]"
-                value={location.pathname}
-                onChange={(e) => e.target.value && navigate(`/region/${e.target.value}`)}
+                value={currentRegion}
+                onChange={handleChane}
             >
-                <option value="/home">All Countries</option>
-                <option value="/africa">Africa</option>
-                <option value="/america">America</option>
-                <option value="/asia">Asia</option>
-                <option value="/europe">Europe</option>
-                <option value="/oceania">Oceania</option>
+                <option value="all">All Countries</option>
+                <option value="africa">Africa</option>
+                <option value="americas">America</option>
+                <option value="asia">Asia</option>
+                <option value="europe">Europe</option>
+                <option value="oceania">Oceania</option>
 
             </select>
 

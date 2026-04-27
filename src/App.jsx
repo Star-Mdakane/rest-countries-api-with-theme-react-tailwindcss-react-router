@@ -1,11 +1,12 @@
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import './App.css'
 import RootLayout from './Layouts/RootLayout';
-import Home from './pages/Home';
+import Home, { countryLoader } from './pages/Home';
 import Country from './pages/Country';
-import CountryRegion from './pages/CountryRegion';
+import CountryRegion, { regionLoader } from './pages/CountryRegion';
 import NotFound from './pages/NotFound';
 import HomeLayout from './Layouts/HomeLayout';
+import CountriesError from './components/CountriesError';
 
 function App() {
 
@@ -16,11 +17,11 @@ function App() {
         {
           Component: HomeLayout,
           children: [
-            { index: true, Component: Home },
-            { path: 'region/:regionName', Component: CountryRegion }
+            { index: true, Component: Home, loader: countryLoader, errorElement: CountriesError },
+            { path: 'region/:regionName', Component: CountryRegion, loader: regionLoader }
           ]
         },
-        { path: '/country/:code', Component: Country },
+        { path: '/country/:code', Component: Country, loader: countryLoader },
       ]
     },
     { path: '*', Component: NotFound }

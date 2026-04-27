@@ -51,6 +51,15 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ## My process
 
+The challenge is to make an app which displays countries of the world where you can filter it by searching and selecting a regionbloc. I have looked at the search input which I believe will just use basic react state management and conditional rendering. The other challenge of displaying the countries by selection, I thought a simple flilter function will do but upon further inspection, I think since we are given the hint of rouer then I will use react router and will try using loaders. Let's go for it!
+1. My approach I went for the usual react approach of a static site then i will work with components states and take it from there.
+- I don't know if I stand to be corrected but I learned that here you have to start with your routes first then you can work on your ui.
+- I also learned that nested routes only share the parent layout as I created a route and thought it would share a layout with a sibbling, so I have to have children of the parents with the grandparent as the layot, deep nesting.
+- The theme is a normal react theme, nothing special from react router.
+
+- Watching tutorials makes react router seem easy, yes it is easy but creating your own routes and nesting routes according to layout may be a little bit confusing, especially with the data mode and object routing.
+- Styling inputs is especially challenging, with the select input you have to make custom spinners like the number input, still I failed to style the individual options as I have to find a custom solution.
+
 ### Built with
 
 - Semantic HTML5 markup
