@@ -46,8 +46,8 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Add solution URL here](https://github.com/Star-Mdakane/rest-countries-api-with-theme-react-tailwindcss-react-router.git)
+- Live Site URL: [Add live site URL here](https://rest-countries-api-with-theme-react.vercel.app/)
 
 ## My process
 
@@ -56,6 +56,21 @@ The challenge is to make an app which displays countries of the world where you 
 - I don't know if I stand to be corrected but I learned that here you have to start with your routes first then you can work on your ui.
 - I also learned that nested routes only share the parent layout as I created a route and thought it would share a layout with a sibbling, so I have to have children of the parents with the grandparent as the layot, deep nesting.
 - The theme is a normal react theme, nothing special from react router.
+
+2. Passing the data. 
+- When I initailly thought of the app, I thought I would just make 3 loaders, home page, region page and country page. Yes at the end the loaders seem to work.
+- I thought I would just get a country name and match it to a loader and get that specific country from the loader but a simpler way was to use a link and pass the specific country as a prop.
+- So far I have recieved the data via loader(where I have used alpha3Code instead of name since name is a common word in a particular object) and also via location where I passed it as a state and now I have a fallback value of the object.
+
+3. Passing the data to a single component of the grid.
+- Here I used props instead of the state and loader as it is the simpler way to go.
+
+4. Select search
+- I initailly used location to go to different routes but btn it and the ui there were bugs whereby the value doesnot change but to navigate I used the value and navigate together on the event but later changed it to use navigate only which is simpler and direct whle I get the value to use on the input
+
+5.  Search input
+- My initial approach was to make a state but I saw that I had to move it up a level so to covver the children but as I see it it will need callback props so I think I will just go straight to context.
+- Works perfectly but my issue was my filter array method where I forgot an explicit return by using brackets since I had tried to edit the function.
 
 - Watching tutorials makes react router seem easy, yes it is easy but creating your own routes and nesting routes according to layout may be a little bit confusing, especially with the data mode and object routing.
 - Styling inputs is especially challenging, with the select input you have to make custom spinners like the number input, still I failed to style the individual options as I have to find a custom solution.
@@ -122,9 +137,9 @@ Describe how you used AI tools (if any) during this project. This helps demonstr
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Website - [Add your name here](https://rest-countries-api-with-theme-react.vercel.app/)
+- Frontend Mentor - [@Star-Mdakane](https://www.frontendmentor.io/profile/yourusername)
+- Twitter - [@KidStarMadrad](https://www.twitter.com/KidStarMadrad)
 
 **Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
 

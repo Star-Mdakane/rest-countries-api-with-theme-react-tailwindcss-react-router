@@ -1,9 +1,8 @@
-import { useLocation, useNavigate, useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 
 const DropdownNav = () => {
 
     const navigate = useNavigate();
-    const location = useLocation();
     const { regionName } = useParams();
 
     const currentRegion = regionName || "all";
@@ -25,7 +24,7 @@ const DropdownNav = () => {
             >
                 <option value="all">All Countries</option>
                 <option value="africa">Africa</option>
-                <option value="americas">America</option>
+                <option value="americas">Americas</option>
                 <option value="asia">Asia</option>
                 <option value="europe">Europe</option>
                 <option value="oceania">Oceania</option>

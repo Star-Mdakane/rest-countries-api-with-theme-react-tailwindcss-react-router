@@ -1,18 +1,12 @@
-import { useLoaderData, useLocation, useNavigate, useParams } from "react-router"
+import { useLoaderData, useLocation, useNavigate } from "react-router"
 
 const Country = () => {
-    const { code } = useParams();
     const navigate = useNavigate();
     const location = useLocation();
 
     const loaderCountry = useLoaderData();
 
     const country = location.state?.country || loaderCountry;
-    console.log(country);
-
-
-
-    console.log(`loaderCountry:${loaderCountry}, location:${location.state?.country}`);
 
     return (
         <>
