@@ -72,6 +72,8 @@ The challenge is to make an app which displays countries of the world where you 
 - My initial approach was to make a state but I saw that I had to move it up a level so to covver the children but as I see it it will need callback props so I think I will just go straight to context.
 - Works perfectly but my issue was my filter array method where I forgot an explicit return by using brackets since I had tried to edit the function.
 
+6. Next will be mapping out the object on the specific pages which I dont think will be difficult.
+
 - Watching tutorials makes react router seem easy, yes it is easy but creating your own routes and nesting routes according to layout may be a little bit confusing, especially with the data mode and object routing.
 - Styling inputs is especially challenging, with the select input you have to make custom spinners like the number input, still I failed to style the individual options as I have to find a custom solution.
 
