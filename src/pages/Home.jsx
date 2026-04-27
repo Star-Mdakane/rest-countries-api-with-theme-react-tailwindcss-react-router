@@ -14,7 +14,7 @@ const Home = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center w-66.25 md:w-150 lg:w-auto lg:max-w-7xl gap-10 md:gap-18">
             {filtered.map(country => (
                 <Link
-                    key={country.alpha3Code}
+                    key={country.alpha3Code.toLowerCase()}
                     to={`/country/${country.alpha3Code}`}
                     state={{ country }}
                 >

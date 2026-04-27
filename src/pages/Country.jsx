@@ -1,4 +1,4 @@
-import { useLoaderData, useLocation, useNavigate } from "react-router"
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router"
 
 const Country = () => {
     const navigate = useNavigate();
@@ -6,7 +6,17 @@ const Country = () => {
 
     const loaderCountry = useLoaderData();
 
-    const country = location.state?.country || loaderCountry;
+    const country = loaderCountry || location.state?.country;
+
+    if (!country) return null;
+
+    const languages = Array.isArray(country.languages)
+        ? country.languages.map(l => l.name)
+        : Object.values(country.languages || {});
+
+    const currencies = country.currencies?.map(c => c.name).join(', ') || 'None';
+
+    const borders = country.borders || [];
 
     return (
         <>
@@ -22,26 +32,82 @@ const Country = () => {
                     </button>
                 </div>
             </div>
-            <div className="flex flex-col mx-auto h-auto lg:flex-row gap-12 md:gap-gap-14 lg:gap-auto lg:justify-between mt-16 md:mt-14 lg:mt:80 w-[320px] md:w-142.5 lg:max-w-319.5">
-                {country.alpha3Code}
+            <div className="flex flex-col mx-auto h-auto lg:flex-row gap-12 md:gap-14 lg:gap-auto lg:justify-between mt-16 md:mt-14 lg:mt:20 w-80 md:w-142.5 lg:max-w-319.5 dark:text-white text-text">
+                <div>
+                    <img
+                        src={country.flag}
+                        alt={`${country.name} flag`}
+                        className="h-full w-full object-cover" />
+                </div>
+                <div className="flex flex-col gap-4 md:gap-6">
+                    <p className="text-[24px] md:text-[32px] leading-[137.5%] tracking-normal font-bold">
+                        {country.name}
+                    </p>
+                    <div className="flex flex-col gap-8">
+                        <div className="flex flex-col md:flex-row gap-8 md:justify-between">
+                            <div className="flex flex-col gap-2">
+                                <p className="text-[16px] leading-8 tracking-normal"><span className="font-bold">Native Name</span>: {country.nativeName}</p>
+                                <p className="text-[16px] leading-8 tracking-normal"><span className="font-bold">Population</span>: {country.population}</p>
+                                <p className="text-[16px] leading-8 tracking-normal"><span className="font-bold">Region</span>: {country.region}</p>
+                                <p className="text-[16px] leading-8 tracking-normal"><span className="font-bold">Sub Region</span>: {country.subregion}</p>
+                                <p className="text-[16px] leading-8 tracking-normal"><span className="font-bold">Capital</span>: {country.capital || "None"}</p>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <p className="text-[16px] leading-8 tracking-normal"><span className="font-bold">Top Level Domain</span>: {country.topLevelDomain?.join(', ')}</p>
+                                <p className="text-[16px] leading-8 tracking-normal"><span className="font-bold">Currencies</span>: {currencies}</p>
+                                <p className="text-[16px] leading-8 tracking-normal"><span className="font-bold">Languages</span>: {languages.join(', ')}</p>
+                            </div>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="text-[16px] leading-8 tracking-normal font-bold">
+                                Border Countries:
+                            </p>
+
+                            {borders.length ? (
+                                <div className="flex gap-4 flex-wrap">
+                                    {borders.map(borderCode => (
+                                        <Link
+                                            to={`/country/${borderCode.toLowerCase()}`}
+                                            key={borderCode}
+                                            state={{ country }}
+                                            className="px-6 py-1.5 text-[14px] leading-[225%] tracking-normal shadow-[0_0_4px_1px_rgb(0_0_0/10%)] rounded-xs bg-white dark:bg-secondary"
+                                        >
+                                            {borderCode}
+                                        </Link>
+                                    ))}
+                                </div>
+                            ) : (
+                                <p className="text-[16px] leading-8 tracking-normal font-bold">No borders</p>
+                            )}
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     )
 }
 
+
+
 export default Country;
 
-export const countryLoader = async ({ params }) => {
+export const countryDetailLoader = async ({ params }) => {
+    console.log('LOADER FIRED. Params:', params);
     const res = await fetch(`/data.json`)
 
+    if (!res.ok) throw new Error("Could not fetch countries");
 
-    const country = await res.json();
+    const countries = await res.json();
+    console.log('Countries loaded:', countries.length);
 
-    const specCountry = country.find(
+    const specCountry = countries.find(
         c => c.alpha3Code.toLowerCase() === params.code.toLowerCase()
     )
 
-    if (!specCountry.ok) throw new Error(`Country ${params.code} not found`);
+    console.log('Found country:', specCountry?.name);
+
+    if (!specCountry) throw new Error("Country not found", { status: 404 });
 
 
     return specCountry;

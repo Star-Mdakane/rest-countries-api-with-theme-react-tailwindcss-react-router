@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router';
 import './App.css'
 import RootLayout from './Layouts/RootLayout';
 import Home, { countryLoader } from './pages/Home';
-import Country from './pages/Country';
+import Country, { countryDetailLoader } from './pages/Country';
 import CountryRegion, { regionLoader } from './pages/CountryRegion';
 import NotFound from './pages/NotFound';
 import HomeLayout from './Layouts/HomeLayout';
@@ -21,7 +21,7 @@ function App() {
             { path: 'region/:regionName', Component: CountryRegion, loader: regionLoader }
           ]
         },
-        { path: '/country/:code', Component: Country, loader: countryLoader },
+        { path: '/country/:code', Component: Country, loader: countryDetailLoader, errorElement: CountriesError },
       ]
     },
     { path: '*', Component: NotFound }
