@@ -1,5 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router';
-import './App.css'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './Layouts/RootLayout';
 import Home, { countryLoader } from './pages/Home';
 import Country, { countryDetailLoader } from './pages/Country';

@@ -1,5 +1,3 @@
-
-
 const CountryCard = ({ country }) => {
     return (
         <div className="w-66.25 h-84 flex flex-col text-text bg-white dark:text-white dark:bg-secondary">
