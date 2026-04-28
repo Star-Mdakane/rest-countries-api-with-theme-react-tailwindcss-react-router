@@ -1,10 +1,10 @@
 import { useContext } from "react"
-import { searchContext } from "../contexts/SearchContext"
+import { SearchContext } from "../contexts/SearchContext"
 
 
 const SearchInput = () => {
 
-    const { searchTerm, setSearchTerm } = useContext(searchContext);
+    const { searchTerm, setSearchTerm } = useContext(SearchContext);
 
     return (
         <div className="flex px-8 gap-6 w-85.75 h-12 md:w-120 items-center  bg-white text-text dark:bg-secondary dark:text-white rounded-[5px] shadow-[0_2px_9px_0_rgb(0_0_0/5.32%)]">

@@ -1,13 +1,13 @@
 import { Link, useLoaderData } from "react-router"
 import CountryCard from "../components/CountryCard";
-import { searchContext } from "../contexts/SearchContext";
+import { SearchContext } from "../contexts/SearchContext";
 import { useContext } from "react";
 
 const CountryRegion = () => {
 
     const region = useLoaderData();
 
-    const { searchTerm } = useContext(searchContext);
+    const { searchTerm } = useContext(SearchContext);
     const filtered = region.filter(item => item.name.toLowerCase().includes(searchTerm.toLowerCase().trim()))
 
     return (

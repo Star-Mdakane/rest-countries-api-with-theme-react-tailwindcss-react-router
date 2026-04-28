@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-export const searchContext = createContext(null)
+export const SearchContext = createContext(null)
 
 export const SearchProvider = ({ children }) => {
 
@@ -13,8 +13,8 @@ export const SearchProvider = ({ children }) => {
 
 
     return (
-        <searchContext.Provider value={value}>
+        <SearchContext.Provider value={value}>
             {children}
-        </searchContext.Provider>
+        </SearchContext.Provider>
     )
 }
