@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useLocation, useNavigate } from "react-router"
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom"
 
 const Country = () => {
     const navigate = useNavigate();

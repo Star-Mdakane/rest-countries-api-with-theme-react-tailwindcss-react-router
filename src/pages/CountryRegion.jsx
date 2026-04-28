@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router"
+import { Link, useLoaderData } from "react-router-dom"
 import CountryCard from "../components/CountryCard";
 import { SearchContext } from "../contexts/SearchContext";
 import { useContext } from "react";
