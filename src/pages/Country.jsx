@@ -14,7 +14,8 @@ const Country = () => {
         ? country.languages.map(l => l.name)
         : Object.values(country.languages || {});
 
-    const currencies = country.currencies?.map(c => c.name).join(', ') || 'None';
+    const currencyObjs = country.currencies ? Object.values(country.currencies) : [];
+    const currencies = currencyObjs.map(c => c.name).join(', ') || 'None';
 
     const borders = country.borders || [];
 
