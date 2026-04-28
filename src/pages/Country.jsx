@@ -32,14 +32,14 @@ const Country = () => {
                     </button>
                 </div>
             </div>
-            <div className="flex flex-col mx-auto h-auto lg:flex-row gap-12 md:gap-14 lg:gap-auto lg:justify-between mt-16 md:mt-14 lg:mt:20 w-80 md:w-142.5 lg:max-w-319.5 dark:text-white text-text">
-                <div>
+            <div className="flex flex-col lg:px-20  mx-auto h-auto lg:flex-row gap-12 md:gap-14 lg:gap-auto lg:h-100 lg:justify-between mt-16 md:mt-14 lg:mt:20 w-80 md:w-142.5 lg:w-full dark:text-white text-text">
+                <div className="lg:w-140">
                     <img
                         src={country.flag}
                         alt={`${country.name} flag`}
                         className="h-full w-full object-cover" />
                 </div>
-                <div className="flex flex-col gap-4 md:gap-6">
+                <div className="lg:w-150 flex flex-col gap-4 md:gap-6 justify-center">
                     <p className="text-[24px] md:text-[32px] leading-[137.5%] tracking-normal font-bold">
                         {country.name}
                     </p>
@@ -59,7 +59,7 @@ const Country = () => {
                             </div>
                         </div>
                         <div className="flex flex-col md:flex-row">
-                            <p className="text-[16px] leading-8 tracking-normal font-bold">
+                            <p className="text-[16px] leading-8 tracking-normal font-bold mr-4">
                                 Border Countries:
                             </p>
 
@@ -70,7 +70,7 @@ const Country = () => {
                                             to={`/country/${borderCode.toLowerCase()}`}
                                             key={borderCode}
                                             state={{ country }}
-                                            className="px-6 py-1.5 text-[14px] leading-[225%] tracking-normal shadow-[0_0_4px_1px_rgb(0_0_0/10%)] rounded-xs bg-white dark:bg-secondary"
+                                            className="flex items-center justify-center h-7 px-2 text-[14px] leading-[225%] tracking-normal shadow-[0_0_4px_1px_rgb(0_0_0/10%)] rounded-xs bg-white dark:bg-secondary"
                                         >
                                             {borderCode}
                                         </Link>
@@ -93,19 +93,15 @@ const Country = () => {
 export default Country;
 
 export const countryDetailLoader = async ({ params }) => {
-    console.log('LOADER FIRED. Params:', params);
     const res = await fetch(`/data.json`)
 
     if (!res.ok) throw new Error("Could not fetch countries");
 
     const countries = await res.json();
-    console.log('Countries loaded:', countries.length);
 
     const specCountry = countries.find(
         c => c.alpha3Code.toLowerCase() === params.code.toLowerCase()
     )
-
-    console.log('Found country:', specCountry?.name);
 
     if (!specCountry) throw new Error("Country not found", { status: 404 });
 

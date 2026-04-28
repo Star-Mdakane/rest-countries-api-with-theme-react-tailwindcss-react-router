@@ -22,9 +22,9 @@ function App() {
           ]
         },
         { path: '/country/:code', Component: Country, loader: countryDetailLoader, errorElement: CountriesError },
+        { path: '*', Component: NotFound }
       ]
     },
-    { path: '*', Component: NotFound }
   ]);
 
   return (

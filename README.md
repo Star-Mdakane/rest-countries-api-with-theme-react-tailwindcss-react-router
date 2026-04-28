@@ -74,6 +74,10 @@ The challenge is to make an app which displays countries of the world where you 
 
 6. Next will be mapping out the object on the specific pages which I dont think will be difficult.
 
+7. Loader Issue...I used cut and paste on my loaders and edited them on different pages so my Country page would call the home loader and it did not work.
+
+8. The links of the borders did not work since my navigate was the first option and it took specificity overthe loader so it did not change but displayed the country I was in een if the url changed.
+
 - Watching tutorials makes react router seem easy, yes it is easy but creating your own routes and nesting routes according to layout may be a little bit confusing, especially with the data mode and object routing.
 - Styling inputs is especially challenging, with the select input you have to make custom spinners like the number input, still I failed to style the individual options as I have to find a custom solution.
 
